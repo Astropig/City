@@ -21,7 +21,7 @@ public class City {
     {
         System.out.println(this.cityName);
         System.out.println("Number of Citzens: " + people.getPeople());
-        System.out.println("Unemployment Rate: " + people.getPeople());
+        System.out.println("employment Rate: " + (buildings.getTotalJobs()/people.getPeople()) * buildings.getJobsFilled() + "%");
         System.out.println("Number Of Houses: " + people.getHouses());
         System.out.println("tax Rate: " + treasury.getTaxRate());
         System.out.println("Cash: " + treasury.getMoney());

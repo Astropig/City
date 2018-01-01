@@ -10,7 +10,7 @@ public class Office {
     private double officeProduction;
     private int jobsMax;
     private int jobsFilled;
-    private int jobsOpen;
+    //private int jobsOpen;
     private double officeUpkeep;
 
     public Office(int officeCount, double officeProduction, int jobsMax) {
@@ -25,8 +25,10 @@ public class Office {
     }
     public void addWorkers(double workers)
     {
-        if(jobsOpen >= workers)
+        if(jobsMax-jobsFilled >= workers)
             jobsFilled += workers;
+        else
+            System.out.println("not enough jobs");
     }
     public double collectFunds()
     {
@@ -35,4 +37,15 @@ public class Office {
         return officeMoney;
 
     }
+    public double getOfficeProduction() {return officeProduction;}
+    public int getOfficeCount(){return officeCount;}
+    public int getJobs()
+    {
+        return jobsMax;
+    }
+    public int getJobsFilled()
+    {
+        return jobsFilled;
+    }
+    public int getOpenings(){return jobsMax - jobsFilled;}
 }

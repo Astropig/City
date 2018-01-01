@@ -11,13 +11,22 @@ public class Buildings {
         this.officeBuilding = officeBuilding;
         this.factory = factory;
     }
+
+    public Office getOfficeBuilding() {
+        return officeBuilding;
+    }
+
     public double collectFunds()
     {
         return officeBuilding.collectFunds();
     }
     public double getTotalJobs()
     {
-        return officeBuilding.
+        return officeBuilding.getJobs();
+    }
+    public int getJobsFilled()
+    {
+        return officeBuilding.getJobsFilled();
     }
 }
 
