@@ -1,4 +1,4 @@
-public class City {
+public class City{
     private People people;
     private Buildings buildings;
     private Treasury treasury;

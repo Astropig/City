@@ -23,12 +23,21 @@ public class Office {
     {
         this.officeUpkeep = officeUpkeep;
     }
-    public void addWorkers(double workers)
+    public void addWorkers(int workers)
     {
         if(jobsMax-jobsFilled >= workers)
             jobsFilled += workers;
         else
             System.out.println("not enough jobs");
+    }
+    public void removeWorkers(int workers)
+    {
+        if(jobsFilled >= workers)
+        {
+            jobsFilled -= workers;
+        }
+        else
+            System.out.println("Not enough workers");
     }
     public double collectFunds()
     {

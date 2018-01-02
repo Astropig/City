@@ -1,6 +1,8 @@
 import CityBuildings.*;
+import Utility.Commands;
 
 public class Main {
+    public static Commands command = new Commands();
     public static void main(String[] args)
     {
         Factory factory = new Factory();
@@ -13,16 +15,17 @@ public class Main {
         Manage manager = new Manage(city);
         //city.addMoney(23);
         city.displayStat();
+        command.CreateSpace(2);
         //manager.start();
         while (true)
         {
             manager.menu();
+            command.CreateSpace(10);
             city.displayStat();
-            for(int i = 0; i < 13; i++)
-            {
-                System.out.println("");
-            }
+            command.CreateSpace(10);
         }
 
     }
+
+
 }

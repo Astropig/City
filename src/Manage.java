@@ -1,8 +1,10 @@
+import Utility.Commands;
+
 import java.util.Scanner;
 
 public class Manage {
     Scanner scanner = new Scanner(System.in);
-
+    private Commands commands =  new Commands();
     private City city;
 
     public Manage(City city) {
@@ -13,23 +15,45 @@ public class Manage {
         System.out.println("Name your city");
         city.setCityName(scanner.nextLine());
     }
-    public void menu()
+    public void menu()                                                                                              //Main menu
     {
-        System.out.println("Welcome to Menu");
-        System.out.println("Employed: " + city.getPeople().getPeople() - city.getBuildings().getJobsFilled());
-        System.out.println("Jobs: 1");
-        System.out.println("Buildings: 2");
-        int input = scanner.nextInt();
 
-        switch (input)
+        while(true)
         {
-            case 1:
-                jobs();
-                break;
-            case 2:
+            int peopleOpen = city.getPeople().getPeople() - city.getBuildings().getJobsFilled();
+            int peopleEmployed = city.getPeople().getPeople() - peopleOpen;
+            System.out.println("Welcome to Menu");
+            System.out.println("Employed: " + peopleEmployed);
+            System.out.println("Unemployed: " + peopleOpen);
+            System.out.println("Jobs - 1");
+            System.out.println("Buildings - 2");
+            System.out.println("End Turn - 3");
+            System.out.println("Display Stats - 4");
+            System.out.println("Quit - 0");
 
-                break;
+            int input = scanner.nextInt();
+
+            switch (input)
+            {
+                case 0:
+                    break;
+                case 1:
+                    jobs();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    city.endDay();
+                    break;
+                case 4:
+                    city.displayStat();
+                    commands.CreateSpace(2);
+                    break;
+                default:
+                    continue;
+            }
         }
+
     }
     public void turn(){
         city.endDay();
@@ -39,6 +63,8 @@ public class Manage {
     {
         int peopleOpen = city.getPeople().getPeople() - city.getBuildings().getJobsFilled();
         Scanner scanner = new Scanner(System.in);
+        //Scanner scanner1 = new Scanner(System.in);
+
         while(true)
         {
 
@@ -62,11 +88,14 @@ public class Manage {
                     System.out.println("Add People - 1");
                     System.out.println("Remove People - 2");
                     System.out.println("Quit - 0");
-                    switch (input)
+
+                    int input2 = scanner.nextInt();
+
+                    switch (input2)
                     {
                         case 0:
-                            break;
-                        case 1:
+                            continue;
+                        case 1:                                                                     //Add people to office building
                             System.out.println("People Available: " + peopleOpen);
                             if(peopleOpen > 0)
                             {
@@ -75,21 +104,35 @@ public class Manage {
                                 if(peopleOpen >= answer)
                                 {
                                     city.getBuildings().getOfficeBuilding().addWorkers(answer);
+                                    continue;
+                                }
+                                else
+                                {
+                                    System.out.println("Too many");
+                                    continue;
                                 }
                             }
-                            break;
-                        case 2:
-
-                            break;
-                        case 3:
-                            break;
+                            continue;
+                        case 2:                                                                                                         //Remove people from office Building
+                            System.out.println("People Employed: " + city.getBuildings().getOfficeBuilding().getJobsFilled());
+                            int answer = scanner.nextInt();
+                            if(city.getBuildings().getOfficeBuilding().getJobsFilled() >= answer)
+                            {
+                                city.getBuildings().getOfficeBuilding().removeWorkers(answer);
+                                continue;
+                            }
+                            else
+                            {
+                                System.out.println("too many people");
+                                continue;
+                            }
                         default:
                             continue;
 
                     }
-                    break;
+                    //break;
                 case 2:
-                    break;
+                    continue;
                 default:
                     continue;
             }
