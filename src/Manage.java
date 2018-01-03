@@ -41,9 +41,10 @@ public class Manage {
                     jobs();
                     break;
                 case 2:
+                    buildings();
                     break;
                 case 3:
-                    city.endDay();
+                    turn();
                     break;
                 case 4:
                     city.displayStat();
@@ -59,7 +60,45 @@ public class Manage {
         city.endDay();
     }
 
-    public void jobs()
+    public void buildings()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        while(true)
+        {
+            System.out.println("Offices: " + city.getBuildings().getOfficeBuilding().getOfficeCount());
+            System.out.println("Factory's: " + null);
+            System.out.println("Please Select");
+            System.out.println("Quit - 0");
+            System.out.println("Office - 1");
+            System.out.println("Factory - 2");
+            int input = scanner.nextInt();
+
+            switch (input)
+            {
+                case 0:
+                    break;
+                case 1:
+                    System.out.println("Quit - 0");
+                    System.out.println("Add Office - 1");
+                    System.out.println("Remove Office - 2");
+                    input = scanner.nextInt();
+                    switch (input)
+                    {
+                        case 1:
+
+                    }
+                    continue;
+                case 2:
+                    continue;
+                default:continue;
+            }
+
+        }
+
+    }
+
+    public void jobs()                                                                                  //adding and removing people
     {
         int peopleOpen = city.getPeople().getPeople() - city.getBuildings().getJobsFilled();
         Scanner scanner = new Scanner(System.in);
@@ -126,15 +165,13 @@ public class Manage {
                                 System.out.println("too many people");
                                 continue;
                             }
-                        default:
-                            continue;
+                        default: continue;
 
                     }
                     //break;
                 case 2:
                     continue;
-                default:
-                    continue;
+                default: continue;
             }
             break;
         }

@@ -20,8 +20,8 @@ public class City{
     public void displayStat()
     {
         System.out.println(this.cityName);
-        System.out.println("Number of Citzens: " + people.getPeople());
-        System.out.println("employment Rate: " + (buildings.getTotalJobs()/people.getPeople()) * buildings.getJobsFilled() + "%");
+        System.out.println("Number of Citizens: " + people.getPeople());
+        System.out.println("employment Rate: " + ((buildings.getTotalJobs()/people.getPeople()) * buildings.getJobsFilled()) * 20 + "%");
         System.out.println("Number Of Houses: " + people.getHouses());
         System.out.println("tax Rate: " + treasury.getTaxRate());
         System.out.println("Cash: " + treasury.getMoney());
